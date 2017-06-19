@@ -3,7 +3,6 @@ package lifecoach.storage.webservice;
 import lifecoach.localdb.webservice.PeopleService;
 import lifecoach.localdb.webservice.People;
 import lifecoach.localdb.webservice.Person;
-import lifecoach.localdb.webservice.Person.HealthProfile;
 import lifecoach.localdb.webservice.Measure;
 import lifecoach.localdb.webservice.MeasureType;
 import lifecoach.localdb.webservice.Goal;
@@ -92,6 +91,7 @@ public class StorageImplementation implements Storage
 
     @Override
     public List<Measure> getMeasures(int pId, String measureType) {
+    	init();
     	System.out.println("Reading Measure by pId = " + pId + ", type = " + measureType);
         List<Measure> p = people.getMeasureHistory(pId, measureType);
         if (p!=null) {
@@ -107,7 +107,25 @@ public class StorageImplementation implements Storage
     }
     
     @Override
+    public List<Measure> getSomeMeasures(int pId, String measureType, int nMeasure) {
+    	init();
+    	System.out.println("Reading Measure by pId = " + pId + ", type = " + measureType);
+        List<Measure> p = people.getSomeMeasure(pId, measureType, nMeasure);
+        if (p!=null) {
+            System.out.println("---> Found Measure");
+            for(Measure m : p)
+            {
+            	System.out.println(m.getIdMeasure() + " " + m.getValue());
+            }
+        } else {
+            System.out.println("---> Didn't find any Measure");
+        }
+        return p;
+    }
+    
+    @Override
     public List<Measure> getLastMeasure(int pId) {
+    	init();
     	System.out.println("Reading Last Measure by pId = " + pId);
         List<Measure> p = people.readLastMeasure(pId);
         if (p!=null) {
@@ -124,6 +142,7 @@ public class StorageImplementation implements Storage
 
     @Override
     public int addMeasure(int pId, Measure measure) {
+    	init();
     	System.out.println("Save Measure with id = " + measure.getIdMeasure());
         
     	if(measure.getMeasureType()==null)
@@ -140,12 +159,14 @@ public class StorageImplementation implements Storage
 
     @Override
     public int updateMeasure(int pId, Measure measure) {
+    	init();
     	System.out.println("Update Measure with id = " + measure.getIdMeasure());  	
     	return people.updateMeasure(pId, measure);
     }
     
     @Override
     public int deleteMeasure(int id) {
+    	init();
     	System.out.println("Delete Measure with id = " + id);
     	return people.deleteMeasure(id);
     }
@@ -155,7 +176,8 @@ public class StorageImplementation implements Storage
     
     @Override
     public MeasureType readMeasureType(int id) {
-        System.out.println("Reading MeasureType by id = " + id);
+        init();
+    	System.out.println("Reading MeasureType by id = " + id);
         MeasureType m = people.readMeasureType(id);
         if (m!=null) {
             System.out.println("---> Found MeasureType by id = " + id + " => " + m.getType());
@@ -167,6 +189,7 @@ public class StorageImplementation implements Storage
 
     @Override
     public List<MeasureType> getMeasureType() {
+    	init();
     	System.out.println("Read MeasureType List");
         return people.getMeasureTypeList();
     }
@@ -176,12 +199,14 @@ public class StorageImplementation implements Storage
     
     @Override
     public Goal readGoal(int pId, String measureType, int gId) {
-        System.out.println("Reading Goal by pId = " + pId + ", mId = " + gId + ", type = " + measureType);
+        init();
+    	System.out.println("Reading Goal by pId = " + pId + ", mId = " + gId + ", type = " + measureType);
         return people.readGoal(pId, measureType, gId);
     }
 
     @Override
     public List<Goal> getGoal(int pId, String measureType) {
+    	init();
     	System.out.println("Reading Goal by pId = " + pId + ", type = " + measureType);
         List<Goal> p = people.getGoalHistory(pId, measureType);
         if (p!=null) {
@@ -198,6 +223,7 @@ public class StorageImplementation implements Storage
 
     @Override
     public int addGoal(int pId, Goal goal) {
+    	init();
     	System.out.println("Save Goal with id = " + goal.getIdGoal());
         
     	if(goal.getMeasureType()==null)
@@ -214,12 +240,14 @@ public class StorageImplementation implements Storage
 
     @Override
     public int updateGoal(int pId, Goal goal) {
+    	init();
     	System.out.println("Update Goal with id = " + goal.getIdGoal());
     	return people.updateGoal(pId, goal);
     }
     
     @Override
     public int deleteGoal(int id) {
+    	init();
     	System.out.println("Delete Goal with id = " + id);
     	return people.deleteGoal(id);
     }
@@ -229,7 +257,8 @@ public class StorageImplementation implements Storage
     
     @Override
     public GoalType readGoalType(int id) {
-        System.out.println("Reading GoalType by id = " + id);
+        init();
+    	System.out.println("Reading GoalType by id = " + id);
         GoalType m = people.readGoalType(id);
         if (m!=null) {
             System.out.println("---> Found GoalType by id = " + id + " => " + m.getType());
@@ -241,6 +270,7 @@ public class StorageImplementation implements Storage
 
     @Override
     public List<GoalType> getGoalType() {
+    	init();
     	System.out.println("Read GoalType List");
         return people.getGoalTypeList();
     }

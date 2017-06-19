@@ -153,6 +153,27 @@ public interface People {
 
     /**
      * 
+     * @param nMeasure
+     * @param personId
+     * @param measureTypeId
+     * @return
+     *     returns java.util.List<lifecoach.localdb.webservice.Measure>
+     */
+    @WebMethod
+    @WebResult(name = "measureList", targetNamespace = "")
+    @RequestWrapper(localName = "getSomeMeasure", targetNamespace = "http://webservice.localdb.lifecoach/", className = "lifecoach.localdb.webservice.GetSomeMeasure")
+    @ResponseWrapper(localName = "getSomeMeasureResponse", targetNamespace = "http://webservice.localdb.lifecoach/", className = "lifecoach.localdb.webservice.GetSomeMeasureResponse")
+    @Action(input = "http://webservice.localdb.lifecoach/People/getSomeMeasureRequest", output = "http://webservice.localdb.lifecoach/People/getSomeMeasureResponse")
+    public List<Measure> getSomeMeasure(
+        @WebParam(name = "personId", targetNamespace = "")
+        int personId,
+        @WebParam(name = "measureTypeId", targetNamespace = "")
+        String measureTypeId,
+        @WebParam(name = "nMeasure", targetNamespace = "")
+        int nMeasure);
+
+    /**
+     * 
      * @param measure
      * @param personId
      * @return

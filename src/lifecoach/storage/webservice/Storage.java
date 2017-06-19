@@ -45,6 +45,10 @@ public interface Storage
     @WebResult(name="measureList") 
     public List<Measure> getMeasures(@WebParam(name="personId") int pId, @WebParam(name="measureTypeId") String typeMeasure);
     
+    @WebMethod(operationName="getSomeMeasure")
+    @WebResult(name="measureList") 
+    public List<Measure> getSomeMeasures(@WebParam(name="personId") int pId, @WebParam(name="measureTypeId") String typeMeasure, @WebParam(name="nMeasure") int nMeasure);
+    
     @WebMethod(operationName="getLastMeasure")
     @WebResult(name="measureList") 
     public List<Measure> getLastMeasure(@WebParam(name="personId") int pIdS);

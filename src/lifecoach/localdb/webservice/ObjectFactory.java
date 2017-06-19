@@ -24,6 +24,7 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
+    private final static QName _GetSomeMeasure_QNAME = new QName("http://webservice.localdb.lifecoach/", "getSomeMeasure");
     private final static QName _DeleteMeasureResponse_QNAME = new QName("http://webservice.localdb.lifecoach/", "deleteMeasureResponse");
     private final static QName _MeasureType_QNAME = new QName("http://webservice.localdb.lifecoach/", "measureType");
     private final static QName _GetGoalHistory_QNAME = new QName("http://webservice.localdb.lifecoach/", "getGoalHistory");
@@ -59,6 +60,7 @@ public class ObjectFactory {
     private final static QName _GetGoalTypeList_QNAME = new QName("http://webservice.localdb.lifecoach/", "getGoalTypeList");
     private final static QName _ReadGoalType_QNAME = new QName("http://webservice.localdb.lifecoach/", "readGoalType");
     private final static QName _ReadGoalTypeResponse_QNAME = new QName("http://webservice.localdb.lifecoach/", "readGoalTypeResponse");
+    private final static QName _GetSomeMeasureResponse_QNAME = new QName("http://webservice.localdb.lifecoach/", "getSomeMeasureResponse");
     private final static QName _GetMeasureTypeListResponse_QNAME = new QName("http://webservice.localdb.lifecoach/", "getMeasureTypeListResponse");
     private final static QName _ReadMeasureTypeResponse_QNAME = new QName("http://webservice.localdb.lifecoach/", "readMeasureTypeResponse");
     private final static QName _UpdateGoal_QNAME = new QName("http://webservice.localdb.lifecoach/", "updateGoal");
@@ -222,6 +224,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link GetSomeMeasure }
+     * 
+     */
+    public GetSomeMeasure createGetSomeMeasure() {
+        return new GetSomeMeasure();
+    }
+
+    /**
      * Create an instance of {@link DeleteMeasureResponse }
      * 
      */
@@ -323,6 +333,14 @@ public class ObjectFactory {
      */
     public ReadGoalTypeResponse createReadGoalTypeResponse() {
         return new ReadGoalTypeResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetSomeMeasureResponse }
+     * 
+     */
+    public GetSomeMeasureResponse createGetSomeMeasureResponse() {
+        return new GetSomeMeasureResponse();
     }
 
     /**
@@ -443,6 +461,15 @@ public class ObjectFactory {
      */
     public Person.HealthProfile createPersonHealthProfile() {
         return new Person.HealthProfile();
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetSomeMeasure }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webservice.localdb.lifecoach/", name = "getSomeMeasure")
+    public JAXBElement<GetSomeMeasure> createGetSomeMeasure(GetSomeMeasure value) {
+        return new JAXBElement<GetSomeMeasure>(_GetSomeMeasure_QNAME, GetSomeMeasure.class, null, value);
     }
 
     /**
@@ -758,6 +785,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://webservice.localdb.lifecoach/", name = "readGoalTypeResponse")
     public JAXBElement<ReadGoalTypeResponse> createReadGoalTypeResponse(ReadGoalTypeResponse value) {
         return new JAXBElement<ReadGoalTypeResponse>(_ReadGoalTypeResponse_QNAME, ReadGoalTypeResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link GetSomeMeasureResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://webservice.localdb.lifecoach/", name = "getSomeMeasureResponse")
+    public JAXBElement<GetSomeMeasureResponse> createGetSomeMeasureResponse(GetSomeMeasureResponse value) {
+        return new JAXBElement<GetSomeMeasureResponse>(_GetSomeMeasureResponse_QNAME, GetSomeMeasureResponse.class, null, value);
     }
 
     /**
