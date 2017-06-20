@@ -210,6 +210,19 @@ public class StorageImplementation implements Storage
     /* Manage Goal */
     
     @Override
+    public List<Goal> getGoals(int pId) {
+        init();
+    	System.out.println("Reading Goal by id = " + pId);
+        List<Goal> m = people.getGoals(pId);
+        if (m!=null) {
+            System.out.println("---> Found Goal for id = " + pId);
+        } else {
+            System.out.println("---> Didn't find any Goal with id = " + pId);
+        }
+        return m;
+    }
+    
+    @Override
     public Goal readGoal(int pId, String measureType, int gId) {
         init();
     	System.out.println("Reading Goal by pId = " + pId + ", mId = " + gId + ", type = " + measureType);
@@ -265,11 +278,11 @@ public class StorageImplementation implements Storage
     }
 
      @Override
-    public Goal getGoalByTitle(String title){
+    public Goal getGoalByTitle(int pId, String title){
 	init();
-	System.out.println("Goal by title = " + title);
+	System.out.println("Goal by id = " + pId + " title = " + title);
 
-	return people.getGoalByTitle(title);
+	return people.getGoalByTitle(pId, title);
     }
     
     /* Manage GoalType */

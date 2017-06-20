@@ -252,6 +252,21 @@ public interface People {
 
     /**
      * 
+     * @param personId
+     * @return
+     *     returns java.util.List<lifecoach.localdb.webservice.Goal>
+     */
+    @WebMethod
+    @WebResult(name = "goalList", targetNamespace = "")
+    @RequestWrapper(localName = "getGoals", targetNamespace = "http://webservice.localdb.lifecoach/", className = "lifecoach.localdb.webservice.GetGoals")
+    @ResponseWrapper(localName = "getGoalsResponse", targetNamespace = "http://webservice.localdb.lifecoach/", className = "lifecoach.localdb.webservice.GetGoalsResponse")
+    @Action(input = "http://webservice.localdb.lifecoach/People/getGoalsRequest", output = "http://webservice.localdb.lifecoach/People/getGoalsResponse")
+    public List<Goal> getGoals(
+        @WebParam(name = "personId", targetNamespace = "")
+        int personId);
+
+    /**
+     * 
      * @param goalId
      * @param personId
      * @param measureTypeId
@@ -342,6 +357,7 @@ public interface People {
 
     /**
      * 
+     * @param personId
      * @param title
      * @return
      *     returns lifecoach.localdb.webservice.Goal
@@ -352,6 +368,8 @@ public interface People {
     @ResponseWrapper(localName = "getGoalByTitleResponse", targetNamespace = "http://webservice.localdb.lifecoach/", className = "lifecoach.localdb.webservice.GetGoalByTitleResponse")
     @Action(input = "http://webservice.localdb.lifecoach/People/getGoalByTitleRequest", output = "http://webservice.localdb.lifecoach/People/getGoalByTitleResponse")
     public Goal getGoalByTitle(
+        @WebParam(name = "personId", targetNamespace = "")
+        int personId,
         @WebParam(name = "title", targetNamespace = "")
         String title);
 
