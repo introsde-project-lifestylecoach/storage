@@ -3,6 +3,7 @@ package lifecoach.storage.webservice;
 import lifecoach.localdb.webservice.Person;
 import lifecoach.localdb.webservice.Measure;
 import lifecoach.localdb.webservice.MeasureType;
+import lifecoach.adaptor.webservice.Bmi;
 import lifecoach.localdb.webservice.Goal;
 import lifecoach.localdb.webservice.GoalType;
 
@@ -113,4 +114,13 @@ public interface Storage
     @WebMethod(operationName="readGoalType")
     @WebResult(name="goalType") 
     public GoalType readGoalType(@WebParam(name="goalId") int id);
+    
+    
+    /* Adaptor */
+    
+    @WebMethod(operationName="getBmi")
+    @WebResult(name="bmi") 
+    public Bmi getBmi(@WebParam(name="weight") float weight, @WebParam(name="height") float height, 
+    		@WebParam(name="sex") char sex, @WebParam(name="age") int age,
+    		@WebParam(name="waist") float waist, @WebParam(name="hip") float hip);
 }

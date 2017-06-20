@@ -8,8 +8,13 @@ import lifecoach.localdb.webservice.MeasureType;
 import lifecoach.localdb.webservice.Goal;
 import lifecoach.localdb.webservice.GoalType;
 
+import lifecoach.adaptor.webservice.AdaptorService;
+import lifecoach.adaptor.webservice.Adaptor;
+import lifecoach.adaptor.webservice.Bmi;
+
 import java.util.List;
 
+import javax.jws.WebParam;
 import javax.jws.WebService;
 
 //Service Implementation
@@ -20,6 +25,8 @@ public class StorageImplementation implements Storage
 {
 	PeopleService service;
 	People people;
+	AdaptorService service_adaptor;
+	Adaptor adaptor;
 	
 	public void init()
 	{
@@ -27,6 +34,11 @@ public class StorageImplementation implements Storage
         people = service.getPeopleImplementationPort();
 	}
 	
+	public void init_adaptor()
+	{
+		service_adaptor = new AdaptorService();
+        adaptor = service_adaptor.getAdaptorImplementationPort();
+	}
 	
 	/* Manage Person*/
 	
@@ -273,5 +285,22 @@ public class StorageImplementation implements Storage
     	init();
     	System.out.println("Read GoalType List");
         return people.getGoalTypeList();
+    }
+    
+    
+    /* Manage Adaptor*/
+    
+    @Override
+    public Bmi getBmi(float weight, float height, char sex, int age, float waist, float hip) {
+    	init_adaptor();    	
+    	System.out.println("Calcolate Bmi with: weight=" + weight + ", height=" + height + ", sex=" + sex
+          		 + ", age=" + age + ", waist=" + waist + ", hip=" + hip);
+        Bmi b = adaptor.getBmi(weight, height, sex, age, waist, hip);
+        if (b!=null) {
+            System.out.println("---> Bmi for = "+weight+" and "+height);
+        } else {
+            System.out.println("---> Error in calculating Bmi for = "+weight+" and "+height);
+        }
+        return b;
     }
 }
