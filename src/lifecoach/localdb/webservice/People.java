@@ -138,6 +138,24 @@ public interface People {
      * @param personId
      * @param measureTypeId
      * @return
+     *     returns lifecoach.localdb.webservice.Measure
+     */
+    @WebMethod
+    @WebResult(name = "measure", targetNamespace = "")
+    @RequestWrapper(localName = "readLastMeasureByType", targetNamespace = "http://webservice.localdb.lifecoach/", className = "lifecoach.localdb.webservice.ReadLastMeasureByType")
+    @ResponseWrapper(localName = "readLastMeasureByTypeResponse", targetNamespace = "http://webservice.localdb.lifecoach/", className = "lifecoach.localdb.webservice.ReadLastMeasureByTypeResponse")
+    @Action(input = "http://webservice.localdb.lifecoach/People/readLastMeasureByTypeRequest", output = "http://webservice.localdb.lifecoach/People/readLastMeasureByTypeResponse")
+    public Measure readLastMeasureByType(
+        @WebParam(name = "personId", targetNamespace = "")
+        int personId,
+        @WebParam(name = "measureTypeId", targetNamespace = "")
+        String measureTypeId);
+
+    /**
+     * 
+     * @param personId
+     * @param measureTypeId
+     * @return
      *     returns java.util.List<lifecoach.localdb.webservice.Measure>
      */
     @WebMethod
@@ -225,7 +243,7 @@ public interface People {
 
     /**
      * 
-     * @param goalId
+     * @param measureTypeId
      * @return
      *     returns lifecoach.localdb.webservice.MeasureType
      */
@@ -235,8 +253,23 @@ public interface People {
     @ResponseWrapper(localName = "readMeasureTypeResponse", targetNamespace = "http://webservice.localdb.lifecoach/", className = "lifecoach.localdb.webservice.ReadMeasureTypeResponse")
     @Action(input = "http://webservice.localdb.lifecoach/People/readMeasureTypeRequest", output = "http://webservice.localdb.lifecoach/People/readMeasureTypeResponse")
     public MeasureType readMeasureType(
-        @WebParam(name = "goalId", targetNamespace = "")
-        int goalId);
+        @WebParam(name = "measureTypeId", targetNamespace = "")
+        int measureTypeId);
+
+    /**
+     * 
+     * @param type
+     * @return
+     *     returns int
+     */
+    @WebMethod
+    @WebResult(name = "idMeasureType", targetNamespace = "")
+    @RequestWrapper(localName = "getIdMeasureTypeByType", targetNamespace = "http://webservice.localdb.lifecoach/", className = "lifecoach.localdb.webservice.GetIdMeasureTypeByType")
+    @ResponseWrapper(localName = "getIdMeasureTypeByTypeResponse", targetNamespace = "http://webservice.localdb.lifecoach/", className = "lifecoach.localdb.webservice.GetIdMeasureTypeByTypeResponse")
+    @Action(input = "http://webservice.localdb.lifecoach/People/getIdMeasureTypeByTypeRequest", output = "http://webservice.localdb.lifecoach/People/getIdMeasureTypeByTypeResponse")
+    public int getIdMeasureTypeByType(
+        @WebParam(name = "type", targetNamespace = "")
+        String type);
 
     /**
      * 

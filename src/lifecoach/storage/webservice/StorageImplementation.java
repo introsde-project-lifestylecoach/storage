@@ -151,6 +151,19 @@ public class StorageImplementation implements Storage
         }
         return p;
     }
+    
+    @Override
+    public Measure getLastMeasureByType(int pId, String type) {
+    	init();
+    	System.out.println("Reading Last Measure by pId = " + pId + " and type = " + type);
+        Measure p = people.readLastMeasureByType(pId, type);
+        if (p!=null) {
+            System.out.println("---> Found Measure by id " + p.getIdMeasure());
+        } else {
+            System.out.println("---> Didn't find any Measure");
+        }
+        return p;
+    }
 
     @Override
     public int addMeasure(int pId, Measure measure) {
@@ -206,7 +219,14 @@ public class StorageImplementation implements Storage
         return people.getMeasureTypeList();
     }
     
+    @Override
+    public int getIdMeasureTypeByType(String type) {
+    	init();
+    	System.out.println("Read MeasureType List");
+        return people.getIdMeasureTypeByType(type);
+    }
     
+        
     /* Manage Goal */
     
     @Override

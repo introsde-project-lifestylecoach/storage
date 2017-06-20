@@ -7,16 +7,16 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Classe Java per readMeasureType complex type.
+ * <p>Classe Java per getIdMeasureTypeByTypeResponse complex type.
  * 
  * <p>Il seguente frammento di schema specifica il contenuto previsto contenuto in questa classe.
  * 
  * <pre>
- * &lt;complexType name="readMeasureType">
+ * &lt;complexType name="getIdMeasureTypeByTypeResponse">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="measureTypeId" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="idMeasureType" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -26,27 +26,27 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "readMeasureType", propOrder = {
-    "measureTypeId"
+@XmlType(name = "getIdMeasureTypeByTypeResponse", propOrder = {
+    "idMeasureType"
 })
-public class ReadMeasureType {
+public class GetIdMeasureTypeByTypeResponse {
 
-    protected int measureTypeId;
+    protected int idMeasureType;
 
     /**
-     * Recupera il valore della proprietà measureTypeId.
+     * Recupera il valore della proprietà idMeasureType.
      * 
      */
-    public int getMeasureTypeId() {
-        return measureTypeId;
+    public int getIdMeasureType() {
+        return idMeasureType;
     }
 
     /**
-     * Imposta il valore della proprietà measureTypeId.
+     * Imposta il valore della proprietà idMeasureType.
      * 
      */
-    public void setMeasureTypeId(int value) {
-        this.measureTypeId = value;
+    public void setIdMeasureType(int value) {
+        this.idMeasureType = value;
     }
 
 }

@@ -52,7 +52,11 @@ public interface Storage
     
     @WebMethod(operationName="getLastMeasure")
     @WebResult(name="measureList") 
-    public List<Measure> getLastMeasure(@WebParam(name="personId") int pIdS);
+    public List<Measure> getLastMeasure(@WebParam(name="personId") int pId);
+    
+    @WebMethod(operationName="getLastMeasureByType")
+    @WebResult(name="measure") 
+    public Measure getLastMeasureByType(@WebParam(name="personId") int pId, @WebParam(name="measureTypeId") String typeMeasure);
     
     @WebMethod(operationName="readMeasure")
     @WebResult(name="measure") 
@@ -80,6 +84,10 @@ public interface Storage
     @WebMethod(operationName="readMeasureType")
     @WebResult(name="measureType") 
     public MeasureType readMeasureType(@WebParam(name="goalId") int id);
+    
+    @WebMethod(operationName="getIdMeasureTypeByType")
+    @WebResult(name="idMeasureType") 
+    public int getIdMeasureTypeByType(@WebParam(name="type") String type);
     
     
     /* Goal */
