@@ -342,6 +342,21 @@ public interface People {
 
     /**
      * 
+     * @param title
+     * @return
+     *     returns lifecoach.localdb.webservice.Goal
+     */
+    @WebMethod
+    @WebResult(name = "goal", targetNamespace = "")
+    @RequestWrapper(localName = "getGoalByTitle", targetNamespace = "http://webservice.localdb.lifecoach/", className = "lifecoach.localdb.webservice.GetGoalByTitle")
+    @ResponseWrapper(localName = "getGoalByTitleResponse", targetNamespace = "http://webservice.localdb.lifecoach/", className = "lifecoach.localdb.webservice.GetGoalByTitleResponse")
+    @Action(input = "http://webservice.localdb.lifecoach/People/getGoalByTitleRequest", output = "http://webservice.localdb.lifecoach/People/getGoalByTitleResponse")
+    public Goal getGoalByTitle(
+        @WebParam(name = "title", targetNamespace = "")
+        String title);
+
+    /**
+     * 
      * @param goalId
      * @return
      *     returns lifecoach.localdb.webservice.GoalType
