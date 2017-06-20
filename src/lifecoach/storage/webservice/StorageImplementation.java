@@ -263,7 +263,14 @@ public class StorageImplementation implements Storage
     	System.out.println("Delete Goal with id = " + id);
     	return people.deleteGoal(id);
     }
-    
+
+     @Override
+    public Goal getGoalByTitle(String title){
+	init();
+	System.out.println("Goal by title = " + title);
+
+	return people.getGoalByTitle(title);
+    }
     
     /* Manage GoalType */
     
