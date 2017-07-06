@@ -27,6 +27,33 @@ public interface People {
 
     /**
      * 
+     * @return
+     *     returns java.util.List<ws.localdb.Person>
+     */
+    @WebMethod
+    @WebResult(name = "people", targetNamespace = "")
+    @RequestWrapper(localName = "getPeopleList", targetNamespace = "http://webservice.localdb.lifecoach/", className = "ws.localdb.GetPeopleList")
+    @ResponseWrapper(localName = "getPeopleListResponse", targetNamespace = "http://webservice.localdb.lifecoach/", className = "ws.localdb.GetPeopleListResponse")
+    @Action(input = "http://webservice.localdb.lifecoach/People/getPeopleListRequest", output = "http://webservice.localdb.lifecoach/People/getPeopleListResponse")
+    public List<Person> getPeopleList();
+
+    /**
+     * 
+     * @param person
+     * @return
+     *     returns int
+     */
+    @WebMethod
+    @WebResult(name = "personId", targetNamespace = "")
+    @RequestWrapper(localName = "createPerson", targetNamespace = "http://webservice.localdb.lifecoach/", className = "ws.localdb.CreatePerson")
+    @ResponseWrapper(localName = "createPersonResponse", targetNamespace = "http://webservice.localdb.lifecoach/", className = "ws.localdb.CreatePersonResponse")
+    @Action(input = "http://webservice.localdb.lifecoach/People/createPersonRequest", output = "http://webservice.localdb.lifecoach/People/createPersonResponse")
+    public int createPerson(
+        @WebParam(name = "person", targetNamespace = "http://webservice.localdb.lifecoach/")
+        Person person);
+
+    /**
+     * 
      * @param personId
      * @return
      *     returns ws.localdb.Person
@@ -90,33 +117,6 @@ public interface People {
         String measureTypeId,
         @WebParam(name = "measureId", targetNamespace = "")
         int measureId);
-
-    /**
-     * 
-     * @return
-     *     returns java.util.List<ws.localdb.Person>
-     */
-    @WebMethod
-    @WebResult(name = "people", targetNamespace = "")
-    @RequestWrapper(localName = "getPeopleList", targetNamespace = "http://webservice.localdb.lifecoach/", className = "ws.localdb.GetPeopleList")
-    @ResponseWrapper(localName = "getPeopleListResponse", targetNamespace = "http://webservice.localdb.lifecoach/", className = "ws.localdb.GetPeopleListResponse")
-    @Action(input = "http://webservice.localdb.lifecoach/People/getPeopleListRequest", output = "http://webservice.localdb.lifecoach/People/getPeopleListResponse")
-    public List<Person> getPeopleList();
-
-    /**
-     * 
-     * @param person
-     * @return
-     *     returns int
-     */
-    @WebMethod
-    @WebResult(name = "personId", targetNamespace = "")
-    @RequestWrapper(localName = "createPerson", targetNamespace = "http://webservice.localdb.lifecoach/", className = "ws.localdb.CreatePerson")
-    @ResponseWrapper(localName = "createPersonResponse", targetNamespace = "http://webservice.localdb.lifecoach/", className = "ws.localdb.CreatePersonResponse")
-    @Action(input = "http://webservice.localdb.lifecoach/People/createPersonRequest", output = "http://webservice.localdb.lifecoach/People/createPersonResponse")
-    public int createPerson(
-        @WebParam(name = "person", targetNamespace = "http://webservice.localdb.lifecoach/")
-        Person person);
 
     /**
      * 
