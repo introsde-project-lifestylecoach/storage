@@ -22,7 +22,9 @@ WebContent/
 build/
 bin/
 *dist/
+.idea/
 dist/
+target/
 
 # File di git
 # .gitignore
